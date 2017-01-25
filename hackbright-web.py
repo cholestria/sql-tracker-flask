@@ -8,9 +8,7 @@ app = Flask(__name__)
 def homepage():
 
     students = hackbright.get_all_students()
-    print students
     projects = hackbright.get_all_projects()
-    print projects
     return render_template("homepage.html",
                            students=students,
                            projects=projects)
