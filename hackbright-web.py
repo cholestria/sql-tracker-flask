@@ -14,7 +14,6 @@ def homepage():
                            projects=projects)
 
 
-
 @app.route("/student")
 def get_student():
     """Show information about a student."""
@@ -55,6 +54,24 @@ def new_student():
 
     return render_template("new_student.html", github=github)
 
+@app.route("/project-add")
+def project_add():
+    """Add a project"""
+
+    return render_template("project_add.html")    
+
+
+@app.route("/new-project", methods=["POST"])
+def new_project():
+    """Add project to database"""
+
+    title = request.form.get('title')
+    description = request.form.get('description')
+    max_grade = request.form.get('max_grade')
+
+    hackbright.make_new_project(title, description, max_grade)
+
+    return render_template("new_project.html", title=title)
 
 @app.route("/project")
 def list_project():
