@@ -1,11 +1,10 @@
-<!doctype html>
-<html>
-<head>
-    <title>Project Tracker</title>
-</head>
+{% extends "base.html" %}
 
-<body>
+{% block head %}
+    <title>Add student</title>
+{% endblock %}
 
+{% block body %}
 <form action="/new-student" method="POST">
     <label>Enter new student first name: 
         <input type="text" name="fname">
@@ -19,5 +18,4 @@
     <input type="submit" value="Add Student">
 </form>
 
-</body>
-</html>
+{% endblock %}

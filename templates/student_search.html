@@ -1,11 +1,10 @@
-<!doctype html>
-<html>
-<head>
-    <title>Project Tracker</title>
-</head>
+{% extends "base.html" %}
 
-<body>
+{% block head %}
+    <title>Student search</title>
+{% endblock %}
 
+{% block body %}
 <form action="/student">
     <label>Enter GitHub username
         <input type="text" name="github">
@@ -13,5 +12,4 @@
     <input type="submit" value="Display Student">
 </form>
 
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Grade Assignment</title>
+{% endblock %}
+
+{% block body %}
+
+<h1>Assign a grade</h1>
+
+    <form action="/added-grade" method="POST">
+        <select name="github">
+            {% for fname, lname, github in students %}
+            <option value="{{github}}">{{fname}} {{lname}}</option>
+            {% endfor %}
+        </select><br>
+        <select name="project">
+            {% for (project,) in projects %}
+            <option value="{{project}}">{{project}}</option>
+            {% endfor %}
+        </select>
+        <label>Assign a grade:
+        <input type="number" name="grade"></label><br>
+        <input type="submit" value="Add Grade">
+    </form>
+{% endblock %}

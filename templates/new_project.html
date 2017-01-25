@@ -1,12 +1,14 @@
-<!doctype html>
-<html>
-<head>
-    <title>Project Added</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Project added</title>
+{% endblock %}
+
+{% block body %}
+
 <h1>Success</h1>
 
 <p>A new project has been successfully added.</p>
 <p><a href="/project?title={{title}}"/>Project info</p>
-</body>
-</html>
+
+{% endblock %}

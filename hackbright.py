@@ -121,13 +121,22 @@ def get_grade_by_github_title(github, title):
 
 def assign_grade(github, title, grade):
     """Assign a student a grade on an assignment and print a confirmation."""
+    SEARCHQ = """SELECT COUNT(grade) FROM grades 
+                WHERE student_github=:github AND project_title=:title"""
 
-    QUERY = """INSERT INTO Grades (student_github, project_title, grade)
-               VALUES (:github, :title, :grade)"""
+    db_cursor = db.session.execute(SEARCHQ, {'github': github, 'title': title})
+    if db_cursor.fetchone()[0] == 0:
+        QUERY = """INSERT INTO Grades (student_github, project_title, grade)
+               VALUES (:github, :title, :grade)"""        
+    else:
+        QUERY = """UPDATE Grades SET grade=:grade 
+        WHERE student_github=:github AND project_title=:title"""
+
     db_cursor = db.session.execute(QUERY, {'github': github, 'title': title, 'grade': grade})
     db.session.commit()
     print "Successfully assigned grade of %s for %s in %s" % (
         grade, github, title)
+
 
 def get_grades_by_github(github):
     """Get a list of all grades for a student by their github username"""

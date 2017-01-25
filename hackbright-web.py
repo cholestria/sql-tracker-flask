@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 
 import hackbright
 
@@ -27,6 +27,29 @@ def get_student():
                             github=github,
                             rows=rows)
 
+
+@app.route('/added-grade', methods=["POST"])
+def added_grade():
+    github = request.form.get('github')
+    project = request.form.get('project')
+    grade = request.form.get('grade')
+    hackbright.assign_grade(github, project, grade)
+
+
+    link = '/student?github=%s' % (github)
+
+    return redirect(link)
+
+
+@app.route('/add-grade')
+def add_grade():
+
+    students = hackbright.get_all_students()
+    projects = hackbright.get_all_projects()
+
+    return render_template("assigngrade.html",
+                            students=students,
+                            projects=projects)
 
 @app.route("/student-search")
 def get_student_form():

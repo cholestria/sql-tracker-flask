@@ -1,9 +1,10 @@
-<!doctype html>
-<html>
-<head>
+{% extends "base.html" %}
+
+{% block head %}
     <title>Homepage</title>
-</head>
-<body>
+{% endblock %}
+
+{% block body %}
 <h1>Students</h1>
 
 <p><ul> {% for fname, lname, github in students %}
@@ -15,5 +16,8 @@
 <p><ul> {% for (title,) in projects %}
     <li><a href="/project?title={{title}}">{{title}}</a></li>
     {% endfor %}</ul></p>
-</body>
-</html>
+
+<h1>Assign a grade</h1>
+<p><a href="/add-grade">Assign a new grade to a student</a></p>
+
+{% endblock %}

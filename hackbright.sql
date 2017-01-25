@@ -107,9 +107,20 @@ ALTER TABLE ONLY projects ALTER COLUMN id SET DEFAULT nextval('projects_id_seq':
 
 COPY grades (student_github, project_title, grade) FROM stdin;
 jhacks	Markov	10
-jhacks	Blockly	2
 sdevelops	Markov	50
 sdevelops	Blockly	100
+jhacks	Blockly	15
+shsjhs	Blockly	100
+\N	\N	5
+\N	\N	50
+\N	\N	50
+\N	\N	50
+\N	\N	50
+\N	\N	50
+\N	\N	50
+henryhenry	Blockly	7
+shsjhs	sql	7654
+henryhenry	Markov	6
 \.
 
 
@@ -121,8 +132,6 @@ COPY projects (id, title, description, max_grade) FROM stdin;
 1	Markov	Tweets generated from Markov chains	50
 2	Blockly	Programmatic Logic Puzzle Game	10
 3	sql	sql stuff	55
-4	sql	sql stuff	55
-5	sql	sql stuff	55
 \.
 
 
@@ -141,9 +150,8 @@ COPY students (first_name, last_name, github) FROM stdin;
 Jane	Hacker	jhacks
 Sarah	Developer	sdevelops
 Janine	Jackson	jjackson
-henry	chen	henryhenry
-henry	chen	henryhenry
 Olivia	Knott	shsjhs
+Henry	Chen	henryhenry
 \.
 
 

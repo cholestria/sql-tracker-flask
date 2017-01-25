@@ -1,9 +1,10 @@
-<!doctype html>
-<html>
-<head>
-    <title>Project Info</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Project info</title>
+{% endblock %}
+
+{% block body %}
 <h1>{{ title }}</h1>
 
 <p>Project description: {{ description }}</p>
@@ -11,5 +12,5 @@
 <p><ul> {% for github, grade in grades %}
     <li><a href="/student?github={{github}}">{{github}}</a>: {{grade}}</li>
     {% endfor %}</ul></p>
-</body>
-</html>
+
+{% endblock %}
